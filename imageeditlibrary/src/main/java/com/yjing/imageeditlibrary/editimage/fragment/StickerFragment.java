@@ -17,7 +17,7 @@ import android.widget.GridView;
 import com.yjing.imageeditlibrary.BaseActivity;
 import com.yjing.imageeditlibrary.R;
 import com.yjing.imageeditlibrary.editimage.EditImageActivity;
-import com.yjing.imageeditlibrary.editimage.StrickerAdapter;
+import com.yjing.imageeditlibrary.editimage.StickerAdapter;
 import com.yjing.imageeditlibrary.editimage.inter.ImageEditInte;
 import com.yjing.imageeditlibrary.editimage.inter.SaveCompletedInte;
 import com.yjing.imageeditlibrary.editimage.model.StickerBean;
@@ -35,11 +35,11 @@ import java.util.List;
 /**
  * 贴图分类fragment
  */
-public class StirckerFragment extends BaseFragment implements ImageEditInte {
+public class StickerFragment extends BaseFragment implements ImageEditInte {
 
     private static final String SELECT_IMAGE_COMPLETED_RECEIVER_ACTION = "SELECT_IMAGE_COMPLETED_RECEIVER_ACTION";
 
-    public static final String TAG = StirckerFragment.class.getName();
+    public static final String TAG = StickerFragment.class.getName();
     public static final String STICKER_FOLDER = "stickers";
     private static final String SELECT_IMAGE_RECEIVER_ACTION = "SELECT_IMAGE_RECEIVER_ACTION";
 
@@ -51,8 +51,8 @@ public class StirckerFragment extends BaseFragment implements ImageEditInte {
 
     private SaveStickersTask mSaveTask;
 
-    public static StirckerFragment newInstance(EditImageActivity activity) {
-        StirckerFragment fragment = new StirckerFragment();
+    public static StickerFragment newInstance(EditImageActivity activity) {
+        StickerFragment fragment = new StickerFragment();
         fragment.activity = activity;
         fragment.mStickerView = activity.mStickerView;
         return fragment;
@@ -87,8 +87,8 @@ public class StirckerFragment extends BaseFragment implements ImageEditInte {
         GridView gv_stirck = (GridView) mainView.findViewById(R.id.gv_stirck);
 
         gv_stirck.setNumColumns(4);
-        StrickerAdapter strickerAdapter = new StrickerAdapter(this);
-        gv_stirck.setAdapter(strickerAdapter);
+        StickerAdapter stickerAdapter = new StickerAdapter(this);
+        gv_stirck.setAdapter(stickerAdapter);
 
         View back = mainView.findViewById(R.id.back_btn);
         back.setOnClickListener(new OnClickListener() {
@@ -130,7 +130,7 @@ public class StirckerFragment extends BaseFragment implements ImageEditInte {
         //发送广播启动选图acticity
 
 //        Intent intent = new Intent();
-//        intent.setAction(StirckerFragment.SELECT_IMAGE_RECEIVER_ACTION);
+//        intent.setAction(StickerFragment.SELECT_IMAGE_RECEIVER_ACTION);
 //        activity.sendBroadcast(intent);
     }
 

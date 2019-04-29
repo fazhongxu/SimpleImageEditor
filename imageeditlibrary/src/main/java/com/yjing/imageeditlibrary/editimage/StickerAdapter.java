@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yjing.imageeditlibrary.R;
-import com.yjing.imageeditlibrary.editimage.fragment.StirckerFragment;
+import com.yjing.imageeditlibrary.editimage.fragment.StickerFragment;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,20 +20,20 @@ import java.util.List;
  * Created by wangyanjing on 2018/2/27.
  */
 
-public class StrickerAdapter extends BaseAdapter {
+public class StickerAdapter extends BaseAdapter {
 
     public DisplayImageOptions imageOption = new DisplayImageOptions.Builder()
             .cacheInMemory(true).showImageOnLoading(R.drawable.yd_image_tx)
             .build();// 下载图片显示
 
-    private final StirckerFragment mStirckerFragment;
+    private final StickerFragment mStickerFragment;
     private List<String> pathList = new ArrayList<String>();// 图片路径列表
 
     public static final String[] stickerPath = {"stickers/type1", "stickers/type2", "stickers/type3", "stickers/type4", "stickers/type5", "stickers/type6"};
 
-    public StrickerAdapter(StirckerFragment fragment) {
+    public StickerAdapter(StickerFragment fragment) {
         super();
-        this.mStirckerFragment = fragment;
+        this.mStickerFragment = fragment;
         for (String path : stickerPath) {
             addStickerImages(path);
         }
@@ -70,7 +70,7 @@ public class StrickerAdapter extends BaseAdapter {
         imageHoler.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mStirckerFragment.selectedStickerItem((String) view.getTag());
+                mStickerFragment.selectedStickerItem((String) view.getTag());
             }
         });
         return v;
@@ -88,7 +88,7 @@ public class StrickerAdapter extends BaseAdapter {
     public void addStickerImages(String folderPath) {
         pathList.clear();
         try {
-            String[] files = mStirckerFragment.getActivity().getAssets()
+            String[] files = mStickerFragment.getActivity().getAssets()
                     .list(folderPath);
             for (String name : files) {
                 pathList.add(folderPath + File.separator + name);

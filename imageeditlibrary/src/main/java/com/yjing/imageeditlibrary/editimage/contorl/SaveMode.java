@@ -14,7 +14,7 @@ import com.yjing.imageeditlibrary.editimage.fragment.MainMenuFragment;
 import com.yjing.imageeditlibrary.editimage.fragment.MosaicFragment;
 import com.yjing.imageeditlibrary.editimage.fragment.PaintFragment;
 import com.yjing.imageeditlibrary.editimage.fragment.RotateFragment;
-import com.yjing.imageeditlibrary.editimage.fragment.StirckerFragment;
+import com.yjing.imageeditlibrary.editimage.fragment.StickerFragment;
 import com.yjing.imageeditlibrary.editimage.inter.ImageEditInte;
 
 import java.util.List;
@@ -65,7 +65,7 @@ public class SaveMode {
         private final View fl_edit_bottom_height;
         private final View bottomView;
         private final View aboveView;
-        public StirckerFragment mStirckerFragment;// 贴图Fragment
+        public StickerFragment mStickerFragment;// 贴图Fragment
         public FliterListFragment mFliterListFragment;// 滤镜FliterListFragment
         public CropFragment mCropFragment;// 图片剪裁Fragment
         public RotateFragment mRotateFragment;// 图片旋转Fragment
@@ -82,7 +82,7 @@ public class SaveMode {
             this.bottomView = bottomView;
             this.aboveView = aboveView;
 
-            mStirckerFragment = StirckerFragment.newInstance(activity);
+            mStickerFragment = StickerFragment.newInstance(activity);
             mFliterListFragment = FliterListFragment.newInstance(activity);
             mCropFragment = CropFragment.newInstance(activity);
             mRotateFragment = RotateFragment.newInstance(activity);
@@ -92,7 +92,7 @@ public class SaveMode {
 
             supportFragmentManager.beginTransaction()
                     .add(bottomView.getId(), mAddTextFragment).hide(mAddTextFragment)
-                    .add(fl_edit_bottom_height.getId(), mStirckerFragment).hide(mStirckerFragment)
+                    .add(fl_edit_bottom_height.getId(), mStickerFragment).hide(mStickerFragment)
                     .add(aboveView.getId(), mFliterListFragment).hide(mFliterListFragment)
                     .add(fl_edit_bottom_height.getId(), mCropFragment).hide(mCropFragment)
                     .add(aboveView.getId(), mRotateFragment).hide(mRotateFragment)
@@ -115,7 +115,7 @@ public class SaveMode {
                 bottomView.setVisibility(View.VISIBLE);
                 fl_edit_bottom_height.setVisibility(View.GONE);
                 aboveView.setVisibility(View.GONE);
-            } else if (x instanceof CropFragment || x instanceof StirckerFragment) {
+            } else if (x instanceof CropFragment || x instanceof StickerFragment) {
                 fl_edit_bottom_height.setVisibility(View.VISIBLE);
                 aboveView.setVisibility(View.GONE);
                 bottomView.setVisibility(View.GONE);
@@ -148,7 +148,7 @@ public class SaveMode {
         public Fragment getFragment(EditMode mode) {
             switch (mode) {
                 case STICKERS:// 贴图
-                    return mStirckerFragment;
+                    return mStickerFragment;
     //            case FILTER:// 滤镜
     //                return mFliterListFragment;
                 case CROP://剪裁
@@ -170,7 +170,7 @@ public class SaveMode {
         public void setContainerVisiable(Fragment fragment, int visiable) {
             if (fragment instanceof AddTextFragment) {
                 bottomView.setVisibility(visiable);
-            } else if (fragment instanceof CropFragment || fragment instanceof StirckerFragment) {
+            } else if (fragment instanceof CropFragment || fragment instanceof StickerFragment) {
                 fl_edit_bottom_height.setVisibility(visiable);
             } else {
                 aboveView.setVisibility(visiable);
