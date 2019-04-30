@@ -32,7 +32,7 @@
         <activity
             android:name="com.yjing.imageeditlibrary.editimage.EditImageActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="stateAlwaysHidden">
         </activity>
 
     </application>
