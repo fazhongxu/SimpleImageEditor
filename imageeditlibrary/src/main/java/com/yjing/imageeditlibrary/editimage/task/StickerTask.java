@@ -1,14 +1,12 @@
 package com.yjing.imageeditlibrary.editimage.task;
 
 import android.annotation.TargetApi;
-import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.os.AsyncTask;
 import android.os.Build;
 
-import com.yjing.imageeditlibrary.R;
 import com.yjing.imageeditlibrary.editimage.EditImageActivity;
 import com.yjing.imageeditlibrary.editimage.inter.SaveCompletedInte;
 import com.yjing.imageeditlibrary.utils.Matrix3;
@@ -18,7 +16,7 @@ import com.yjing.imageeditlibrary.utils.Matrix3;
  */
 public abstract class StickerTask extends AsyncTask<Bitmap, Void, Bitmap> {
     private final SaveCompletedInte inte;
-    private Dialog dialog;
+    //private Dialog dialog;
 
     private EditImageActivity mContext;
 
@@ -34,9 +32,9 @@ public abstract class StickerTask extends AsyncTask<Bitmap, Void, Bitmap> {
         if (mContext.isFinishing())
             return;
 
-        dialog = mContext.getLoadingDialog(mContext, R.string.saving_image,
-                false);
-        dialog.show();
+        //dialog = mContext.getLoadingDialog(mContext, R.string.saving_image,
+//                false);
+        //dialog.show();
     }
 
     @Override
@@ -64,14 +62,14 @@ public abstract class StickerTask extends AsyncTask<Bitmap, Void, Bitmap> {
     @Override
     protected void onCancelled() {
         super.onCancelled();
-        dialog.dismiss();
+        //dialog.dismiss();
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCancelled(Bitmap result) {
         super.onCancelled(result);
-        dialog.dismiss();
+        //dialog.dismiss();
     }
 
     @Override
@@ -88,7 +86,7 @@ public abstract class StickerTask extends AsyncTask<Bitmap, Void, Bitmap> {
             }
         });
 
-        dialog.dismiss();
+        //dialog.dismiss();
     }
 
     public abstract void handleImage(Canvas canvas, Matrix m);
