@@ -45,6 +45,36 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_height="@dimen/bottom_tool_detail_height">
+
+            <ImageView
+                android:id="@+id/ic_normal"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_normal"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/ic_rectangle"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_rectangle"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/ic_circle"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_circle"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/ic_arrow"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_arrow"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/bottom_tool_detail_height"
             android:gravity="center_vertical"
             android:orientation="vertical">

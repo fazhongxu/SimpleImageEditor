@@ -38,6 +38,10 @@ public class PaintFragment extends BaseFragment implements View.OnClickListener,
     private ImageView mRevokeView;
     private SaveCustomPaintTask mSavePaintImageTask;
     private ColorSeekBar colorSeekBar;
+    private ImageView mIvNormal;
+    private ImageView mIvRectangle;
+    private ImageView mIvCircle;
+    private ImageView mIvArrow;
 
     public static PaintFragment newInstance(EditImageActivity activity) {
         PaintFragment fragment = new PaintFragment();
@@ -58,6 +62,10 @@ public class PaintFragment extends BaseFragment implements View.OnClickListener,
         mPaintModeView = (PaintModeView) mainView.findViewById(R.id.paint_thumb);
         colorSeekBar = (ColorSeekBar) mainView.findViewById(R.id.colorSlider);
         mRevokeView = (ImageView) mainView.findViewById(R.id.paint_revoke);
+        mIvNormal = (ImageView) mainView.findViewById(R.id.ic_normal);
+        mIvRectangle = (ImageView) mainView.findViewById(R.id.ic_rectangle);
+        mIvCircle = (ImageView) mainView.findViewById(R.id.ic_circle);
+        mIvArrow = (ImageView) mainView.findViewById(R.id.ic_arrow);
         return mainView;
     }
 
@@ -70,6 +78,10 @@ public class PaintFragment extends BaseFragment implements View.OnClickListener,
         initStokeWidthPopWindow();
 
         mRevokeView.setOnClickListener(this);
+        mIvNormal.setOnClickListener(this);
+        mIvRectangle.setOnClickListener(this);
+        mIvCircle.setOnClickListener(this);
+        mIvArrow.setOnClickListener(this);
 
         colorSeekBar.setOnColorChangeListener(new ColorSeekBar.OnColorChangeListener() {
             @Override
@@ -85,6 +97,14 @@ public class PaintFragment extends BaseFragment implements View.OnClickListener,
             setStokeWidth();
         } else if (v == mRevokeView) {//撤销功能
             mPaintView.undo();
+        }else if (v == mIvNormal) {
+            mPaintView.setShape(CustomPaintView.Shape.Line);
+        }else if (v == mIvRectangle) {
+            mPaintView.setShape(CustomPaintView.Shape.Rectangle);
+        }else if(v == mIvCircle) {
+            mPaintView.setShape(CustomPaintView.Shape.Circle);
+        }else if (v == mIvArrow) {
+            mPaintView.setShape(CustomPaintView.Shape.Arrow);
         }
     }
 

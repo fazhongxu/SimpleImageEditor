@@ -50,7 +50,7 @@ public class CustomPaintView extends View implements EditFunctionOperationInterf
 
     private String camera_path;
     // 0 自由绘制 1 圆形
-    private Shape mPaintType = Shape.Circle;
+    private Shape mPaintType = Shape.Line;
 
     public enum Shape {
         Line, // 自由线条
@@ -397,13 +397,13 @@ public class CustomPaintView extends View implements EditFunctionOperationInterf
         resetCanvas();
         //清空保存操作的栈容器
         mUndoStack.clear();
+        shapes.clear();
     }
 
     private void resetCanvas() {
         if (mDrawBit != null && !mDrawBit.isRecycled()) {
             mDrawBit.recycle();
         }
-//        shapes.clear();
         invalidate();
         generatorBit();
     }
@@ -428,9 +428,7 @@ public class CustomPaintView extends View implements EditFunctionOperationInterf
         int size = shapes.size();
         if (size > 0) {
             shapes.remove(size - 1);
-            //drawGuiji();
             resetCanvas();
-
             drawGuiji();
             invalidate();
         }
@@ -442,7 +440,9 @@ public class CustomPaintView extends View implements EditFunctionOperationInterf
      */
     public void all() {
         shapes.clear();
+        resetCanvas();
         drawGuiji();
+        invalidate();
     }
 
 
