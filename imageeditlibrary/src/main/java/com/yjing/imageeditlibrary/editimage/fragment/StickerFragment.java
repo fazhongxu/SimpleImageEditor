@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -136,6 +137,13 @@ public class StickerFragment extends BaseFragment implements ImageEditInte {
 //        mStickerView.setVisibility(View.VISIBLE);
         mainView.setVisibility(View.VISIBLE);
         mStickerView.setIsOperation(true);
+        mStickerView.setOnBlankClickListener(new StickerView.OnBlankClickListener() {
+            @Override
+            public void onBlankClick() {
+                Log.e(TAG, "onBlankClick: ");
+                mainView.setVisibility(View.GONE);
+            }
+        });
         //发送广播启动选图acticity
 
 //        Intent intent = new Intent();

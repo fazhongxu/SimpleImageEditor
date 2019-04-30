@@ -150,6 +150,9 @@ public class StickerView extends View implements EditFunctionOperationInterface 
                     invalidate();
                 }// end if
 
+                if (mOnBlankClickListener != null && currentStatus == STATUS_IDLE) {
+                    mOnBlankClickListener.onBlankClick();
+                }
                 break;
             case MotionEvent.ACTION_MOVE:
                 ret = true;
@@ -179,8 +182,24 @@ public class StickerView extends View implements EditFunctionOperationInterface 
                 ret = false;
                 currentStatus = STATUS_IDLE;
                 break;
+             default:
+                    break;
         }// end switch
         return ret;
+    }
+
+    private OnBlankClickListener mOnBlankClickListener;
+
+    /**
+     * 设置空白区域点击监听
+     * @param onBlankClickListener
+     */
+    public void setOnBlankClickListener(OnBlankClickListener onBlankClickListener) {
+        mOnBlankClickListener = onBlankClickListener;
+    }
+
+    public interface OnBlankClickListener {
+        void onBlankClick();
     }
 
     public LinkedHashMap<Integer, StickerItem> getBank() {

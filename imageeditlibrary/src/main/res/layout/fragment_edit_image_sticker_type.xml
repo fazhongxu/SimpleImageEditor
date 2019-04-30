@@ -18,6 +18,7 @@
 
     <ImageView
         android:id="@+id/back_btn"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:src="@drawable/edit_image_emotion_board_roll" />
