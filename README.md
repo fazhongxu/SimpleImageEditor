@@ -21,10 +21,15 @@
 ![剪切界面](https://github.com/YanJingW/SimpleImageEditor/blob/master/assets/crop.png)
 
 
+
+
 ### 项目现有缺陷
 
 * 马赛克操作有些卡顿，后续需要优化
 * 裁剪的实现，没有实现在保存之前的状态的基础上进行操作。简单粗暴直接将之前所有操作生成一张图片，替换为操作图片
+
+
+* 补充功能 实现画 圆形 矩形 箭头
 
 ### 版本更新
 
