@@ -89,6 +89,7 @@ public class CustomPaintView extends View implements EditFunctionOperationInterf
      * 模拟栈，保存涂鸦操作，便于撤销
      */
     private CopyOnWriteArrayList<PaintPath> mUndoStack = new CopyOnWriteArrayList<>();
+    private CopyOnWriteArrayList<Object> mUndoStackList = new CopyOnWriteArrayList<>();
 
     public CustomPaintView(Context context) {
         super(context);
@@ -372,12 +373,21 @@ public class CustomPaintView extends View implements EditFunctionOperationInterf
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
                 if (mPaintType != Shape.Line) {
-                    shapes.add(new Shapes(startX, startY, endX, endY, width, paint.getColor(), circle));//保存历史轨迹
+//                    shapes.add(new Shapes(startX, startY, endX, endY, width, paint.getColor(), circle));//保存历史轨迹
+                    Shapes shapes = new Shapes(startX, startY, endX, endY, width, paint.getColor(), circle);
+                    this.shapes.add(shapes);//保存历史轨迹
+
+                    mUndoStackList.add(shapes);
                 }else { //自由画线
-                    mUndoStack.add(new PaintPath(mPath, copyPaint()));
+                    PaintPath paintPath = new PaintPath(mPath, copyPaint());
+                    mUndoStack.add(paintPath);
                     Log.i("wangyanjing", "数组里面加入了一个mPath" + mPath.hashCode() + "====" + mUndoStack.size());
                     mPaintCanvas.drawPath(mPath, mPaint);
+
+                    mUndoStackList.add(paintPath);
                 }
+
+
                 ret = false;
                 this.postInvalidate();
                 break;
@@ -404,6 +414,8 @@ public class CustomPaintView extends View implements EditFunctionOperationInterf
         //清空保存操作的栈容器
         mUndoStack.clear();
         shapes.clear();
+
+        mUndoStackList.clear();
     }
 
     private void resetCanvas() {
@@ -456,16 +468,37 @@ public class CustomPaintView extends View implements EditFunctionOperationInterf
      * 撤销
      */
     public void undo() {
-        if (mUndoStack.size() > 0) {
-            PaintPath undoable = mUndoStack.remove(mUndoStack.size() - 1);
-            Log.i("wangyanjing", "撤销了一个mPath"+undoable.hashCode()+"===="+mUndoStack.size());
-            resetCanvas();
-            draw(mPaintCanvas, mUndoStack);
-            invalidate();
+        if (mUndoStackList.size() > 0) {
+            Object object = mUndoStackList.remove(mUndoStackList.size() -1);
+            if (object instanceof PaintPath) {
+                PaintPath undoable = mUndoStack.remove(mUndoStack.size() - 1);
+                Log.i("wangyanjing", "撤销了一个mPath"+undoable.hashCode()+"===="+mUndoStack.size());
+                resetCanvas();
+                draw(mPaintCanvas, mUndoStack);
+                drawGuiji();
+                invalidate();
+            }else {
+                one();
+            }
+
         }
         // 图形一步一步撤销
-        one();
+//        one();
     }
+// /**
+//     * 撤销
+//     */
+//    public void undo() {
+//        if (mUndoStack.size() > 0) {
+//            PaintPath undoable = mUndoStack.remove(mUndoStack.size() - 1);
+//            Log.i("wangyanjing", "撤销了一个mPath"+undoable.hashCode()+"===="+mUndoStack.size());
+//            resetCanvas();
+//            draw(mPaintCanvas, mUndoStack);
+//            invalidate();
+//        }
+//        // 图形一步一步撤销
+//        one();
+//    }
 
     private void draw(Canvas mPaintCanvas, CopyOnWriteArrayList<PaintPath> mUndoStack) {
         for (PaintPath paintPath : mUndoStack) {
