@@ -20,8 +20,8 @@
 
 ![剪切界面](https://github.com/YanJingW/SimpleImageEditor/blob/master/assets/crop.png)
 
-![圆形，矩形，箭头，界面](https://github.com/fazhongxu/SimpleImageEditor/blob/master/assets/shape.jpeg)
-
+圆形，矩形，箭头，界面
+<img src="https://github.com/fazhongxu/SimpleImageEditor/blob/master/assets/shape.jpeg" width="50%" height="20%">
 
 ### 项目现有缺陷
 
