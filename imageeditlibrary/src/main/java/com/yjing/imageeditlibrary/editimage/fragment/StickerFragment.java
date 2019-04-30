@@ -8,6 +8,8 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -85,10 +87,12 @@ public class StickerFragment extends BaseFragment implements ImageEditInte {
                              Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.fragment_edit_image_sticker_type, null);
         GridView gv_stirck = (GridView) mainView.findViewById(R.id.gv_stirck);
+        RecyclerView recyclerView = (RecyclerView) mainView.findViewById(R.id.rv_sticker);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
 
         gv_stirck.setNumColumns(4);
         StickerAdapter stickerAdapter = new StickerAdapter(this);
-        gv_stirck.setAdapter(stickerAdapter);
+//        gv_stirck.setAdapter(stickerAdapter);
 
         View back = mainView.findViewById(R.id.back_btn);
         back.setOnClickListener(new OnClickListener() {
@@ -97,6 +101,11 @@ public class StickerFragment extends BaseFragment implements ImageEditInte {
                 mainView.setVisibility(View.GONE);
             }
         });
+
+
+//        StickerImgAdapter stickerImgAdapter = new StickerImgAdapter(this);
+
+        recyclerView.setAdapter(stickerAdapter);
         return mainView;
     }
 

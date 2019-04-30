@@ -2,12 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <GridView
         android:id="@+id/gv_stirck"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="200dp"></GridView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_sticker"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
 
     <ImageView
         android:id="@+id/back_btn"
