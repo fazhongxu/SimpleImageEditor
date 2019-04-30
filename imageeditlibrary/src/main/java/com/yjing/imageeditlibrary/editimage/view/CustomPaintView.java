@@ -219,6 +219,7 @@ public class CustomPaintView extends View implements EditFunctionOperationInterf
     private void drawGuiji() {
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
         drawOld();
+        drawOldLine();
         for (Shapes sp : shapes) {//画历史轨迹
             paint.setColor(sp.color);
             paint.setStrokeWidth(sp.width);
@@ -236,6 +237,11 @@ public class CustomPaintView extends View implements EditFunctionOperationInterf
             }
         }
         setImageBitmap(copyPic);
+    }
+
+    private void drawOldLine() {
+        draw(mPaintCanvas, mUndoStack);
+        invalidate();
     }
 
     private void setImageBitmap(Bitmap bitmap) {
