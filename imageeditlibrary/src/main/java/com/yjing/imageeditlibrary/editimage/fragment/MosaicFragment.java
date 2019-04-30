@@ -86,10 +86,11 @@ public class MosaicFragment extends BaseFragment implements View.OnClickListener
         } else if (i == R.id.action_ground_glass) {
 
             if (hasMosaicRes(MosaicUtil.Effect.BLUR)) {
-                Bitmap blur = MosaicUtil.blurBitmap(getActivity(),activity.mainBitmap);
+                /*Bitmap blur = MosaicUtil.blurBitmap(getActivity(),activity.mainBitmap);
                 if (blur == null) {
                     blur = MosaicUtil.getMosaic(activity.mainBitmap);
-                }
+                }*/
+                Bitmap blur = MosaicUtil.getMosaic(activity.mainBitmap);
                 mosaicResMap.put(MosaicUtil.Effect.BLUR, blur);
                 mMosaicView.setMosaicResource(mosaicResMap);
             }
@@ -154,11 +155,12 @@ public class MosaicFragment extends BaseFragment implements View.OnClickListener
 
         mMosaicView.setMosaicBackgroundResource(activity.mainBitmap);
         Bitmap bit = MosaicUtil.getMosaic(activity.mainBitmap);
+        Bitmap blur = MosaicUtil.getMosaic(activity.mainBitmap);
 //        Bitmap blur = MosaicUtil.getBlur(activity.mainBitmap);
-        Bitmap blur = MosaicUtil.blurBitmap(getContext(), activity.mainBitmap);
+        /*Bitmap blur = MosaicUtil.blurBitmap(getContext(), activity.mainBitmap);
         if (blur == null) {
             blur = MosaicUtil.getBlur(activity.mainBitmap);
-        }
+        }*/
         mosaicResMap = new HashMap<>();
         mosaicResMap.put(MosaicUtil.Effect.MOSAIC, bit);
         mosaicResMap.put(MosaicUtil.Effect.BLUR, blur);
