@@ -20,7 +20,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     private View stickerBtn;// 贴图按钮
     //    private View fliterBtn;// 滤镜按钮
     private View cropBtn;// 剪裁按钮
-    //    private View rotateBtn;// 旋转按钮
+        private View rotateBtn;// 旋转按钮
     private View mTextBtn;//文字型贴图添加
     private View mPaintBtn;//编辑按钮
     private View mosaicBtn;//马赛克按钮
@@ -45,7 +45,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         stickerBtn = mainView.findViewById(R.id.btn_stickers);
 //        fliterBtn = mainView.findViewById(R.id.btn_fliter);
         cropBtn = mainView.findViewById(R.id.btn_crop);
-//        rotateBtn = mainView.findViewById(R.id.btn_rotate);
+        rotateBtn = mainView.findViewById(R.id.btn_rotate);
         mTextBtn = mainView.findViewById(R.id.btn_text);
         mPaintBtn = mainView.findViewById(R.id.btn_paint);
         mosaicBtn = mainView.findViewById(R.id.btn_mosaic);
@@ -59,7 +59,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         stickerBtn.setOnClickListener(this);
 //        fliterBtn.setOnClickListener(this);
         cropBtn.setOnClickListener(this);
-//        rotateBtn.setOnClickListener(this);
+        rotateBtn.setOnClickListener(this);
         mTextBtn.setOnClickListener(this);
         mPaintBtn.setOnClickListener(this);
         mosaicBtn.setOnClickListener(this);
@@ -123,6 +123,11 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
             case TEXT:
                 v = mTextBtn;
                 break;
+            case ROTATE:
+                v = rotateBtn;
+                break;
+                default:
+                    break;
         }
         return v;
     }
@@ -135,8 +140,8 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
 //            clickMode = SaveMode.EditMode.FILTER;
         } else if (v == cropBtn) {
             clickMode = SaveMode.EditMode.CROP;
-//        } else if (v == rotateBtn) {
-//            clickMode = SaveMode.EditMode.ROTATE;
+        } else if (v == rotateBtn) {
+            clickMode = SaveMode.EditMode.ROTATE;
         } else if (v == mTextBtn) {
             clickMode = SaveMode.EditMode.TEXT;
         } else if (v == mPaintBtn) {

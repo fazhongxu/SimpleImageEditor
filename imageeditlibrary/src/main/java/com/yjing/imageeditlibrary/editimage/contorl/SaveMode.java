@@ -51,9 +51,10 @@ public class SaveMode {
         PAINT,//绘制模式
         STICKERS,// 贴图模式
         //        FILTER,// 滤镜模式
-//        ROTATE,// 旋转模式
         TEXT,// 文字模式
-        CROP// 剪裁模式
+        CROP,// 剪裁模式
+        ROTATE,// 旋转模式
+
     }
 
     /**
@@ -153,8 +154,8 @@ public class SaveMode {
     //                return mFliterListFragment;
                 case CROP://剪裁
                     return mCropFragment;
-    //            case ROTATE://旋转
-    //                return mRotateFragment;
+                case ROTATE://旋转
+                    return mRotateFragment;
                 case TEXT://添加文字
                     return mAddTextFragment;
                 case PAINT:

@@ -70,7 +70,7 @@ public class RotateFragment extends BaseFragment implements ImageEditInte {
     @Override
     public void appleEdit(SaveCompletedInte inte) {
         if (mSeekBar.getProgress() == 0 || mSeekBar.getProgress() == 360) {// 没有做旋转
-            activity.backToMain();
+            //activity.backToMain();
             if (inte != null) {
                 inte.completed();
             }
@@ -91,7 +91,7 @@ public class RotateFragment extends BaseFragment implements ImageEditInte {
             mSeekBar.setProgress(0);
         }
         mRotatePanel.reset();
-//        mRotatePanel.setVisibility(View.VISIBLE);
+        mRotatePanel.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -141,7 +141,7 @@ public class RotateFragment extends BaseFragment implements ImageEditInte {
     public void backToMain() {
 //        appleEdit(null);
         activity.mainImage.setVisibility(View.VISIBLE);
-//        this.mRotatePanel.setVisibility(View.GONE);
+        this.mRotatePanel.setVisibility(View.GONE);
     }
 
 
@@ -214,6 +214,7 @@ public class RotateFragment extends BaseFragment implements ImageEditInte {
             // 切换新底图
             activity.changeMainBitmap(result);
             activity.backToMain();
+            mSeekBar.setProgress(0);
         }
     }
 

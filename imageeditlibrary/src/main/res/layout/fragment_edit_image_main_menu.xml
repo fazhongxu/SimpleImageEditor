@@ -81,5 +81,21 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/btn_rotate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/crop"
+            android:src="@drawable/ic_circle" />
+
+    </LinearLayout>
+
 </LinearLayout>
 
